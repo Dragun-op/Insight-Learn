@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% block title %}Understanding Classifier{% endblock %}
+{% block content %}
+<div class="card shadow mb-4">
+  <div class="card-header py-3">
+    <h4 class="m-0 font-weight-bold text-primary">Test Your Understanding</h4>
+  </div>
+  <div class="card-body">
+    <form method="POST">
+      {{ form.hidden_tag() }}
+
+      {% if not question %}
+      <div class="form-group">
+        {{ form.topic.label(class="form-label") }}
+        {{ form.topic(class="form-control", placeholder="e.g., Machine Learning") }}
+      </div>
+      {{ form.submit(class="btn btn-info", value="Generate Question") }}
+      {% endif %}
+
+      {% if question %}
+      <div class="form-group">
+        <label>Topic: <strong>{{ topic }}</strong></label><br>
+        <label>Generated Question:</label>
+        <p class="alert alert-secondary">{{ question }}</p>
+        <input type="hidden" name="topic" value="{{ topic }}">
+      </div>
+
+      <div class="form-group">
+        {{ form.explanation.label(class="form-label") }}
+        {{ form.explanation(class="form-control", rows="5") }}
+      </div>
+      {{ form.submit(class="btn btn-success", value="Classify My Understanding") }}
+      {% endif %}
+    </form>
+  </div>
+</div>
+{% endblock %}
+

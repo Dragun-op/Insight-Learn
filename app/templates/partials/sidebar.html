@@ -1,0 +1,31 @@
+<ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+  <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{{ url_for('nlp.classifier') }}">
+    <div class="sidebar-brand-icon">
+      <i class="fas fa-brain"></i>
+    </div>
+    <div class="sidebar-brand-text mx-3">InsightLearn</div>
+  </a>
+
+  <hr class="sidebar-divider my-0">
+  <li class="nav-item">
+    <a class="nav-link" href="{{ url_for('nlp.classifier') }}">
+      <i class="fas fa-magic"></i>
+      <span>Text Classifier</span>
+    </a>
+  </li>
+  {% if current_user.is_authenticated %}
+    <li class="nav-item">
+      <a class="nav-link" href="{{ url_for('auth.logout') }}">
+        <i class="fas fa-sign-out-alt"></i>
+        <span>Logout</span>
+      </a>
+    </li>
+  {% else %}
+    <li class="nav-item">
+      <a class="nav-link" href="{{ url_for('auth.login') }}">
+        <i class="fas fa-sign-in-alt"></i>
+        <span>Login</span>
+      </a>
+    </li>
+  {% endif %}
+</ul>

@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block title %}Classification Result{% endblock %}
+{% block content %}
+<div class="card shadow">
+  <div class="card-header">
+    <h4 class="m-0 font-weight-bold text-success">Classification Result</h4>
+  </div>
+  <div class="card-body">
+    <h5>Input:</h5>
+    <p>{{ input_text }}</p>
+
+    <h5>Prediction Scores:</h5>
+    <ul class="list-group">
+      {% for label, score in results.items() %}
+        <li class="list-group-item d-flex justify-content-between">
+          {{ label }}
+          <span class="badge badge-info">{{ (score * 100) | round(2) }}%</span>
+        </li>
+      {% endfor %}
+    </ul>
+  </div>
+</div>
+{% endblock %}
